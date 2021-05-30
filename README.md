@@ -104,7 +104,6 @@ Tudo no Mongoose começa com um Schema. Cada esquema é mapa para uma coleção 
 
 Exemplo photoshop x Filtro do Instagram
 
-
 #### `10. Conceito de Model (Schema)`
 Model ou Schema são moldes que descrevem quais campos serão aceitos no seu banco de dados, podemos também definir informações de tipo de dados e fazer "os relacionamentos".
 
@@ -141,95 +140,6 @@ process.env.NOME_DA_CHAVE
 Você pode criar um .env.example e deixar apenas as chaves genéricas
 ```
 
-`Introdução de programação orientada a objetos`
-
-#### class x function 
-
-*O que é a programação orientada a objetos? 
-
-*É um paradigma de desenvolvimento, uma forma de construir e analisar a nossa lógica,além disso é utilizado muito na maioria dos sistemas atuais* 
-
-*Tudo o que fazemos na POO é trabalhar com objetos.Ela foi criada para tentarmos representar objetos do mundo real nos códigos, com estados e comportamentos.*
-
-*Os 4 pilares da programação orientada a objeto:*
-
-*herança: podemos extender propriedades e metodos de uma classe mae para uma classe filha.Isso serve para replicar as caracteristicas de um objeto para outro. Isso nos ajuda a escrever códigos sem repetir tanto as mesmas linhas de código.*
-
-*encapsulamento: conceito simples e poderoso, pois guarda a lógica da nossa classe, deixando nossos atributos de forma privada e só podemos acessar utilizando os metodos de get e set.*
-
-*polimorfismo: a capacidade de objetos compativeis, se passar por outro em certas ocaciões. Podemos dessa forma herdar metodos, e reescrever todos os comportamentos. "Podemos brincar a vontade com o DNA do nosso sistema".*
-
-*abstração: não é um conceito concreto, chega ser redundante. O super poder é criarmos a classe mãe o mais abstrata possível, ela recebe o nome de template, identidade ou superclasse. Não pode ser criado um onjeto diretamente dessa classe, mas sim das classes filhas que herdam as caracteristicas e comportamentos da classe mae.*
-
-*Se você começou agora, vai perceber com o tempo a importancia desses 4 pilares, pois eles são as bases de técnicas e ferramentas que nos ajudam desde a concepção do projeto até codificação dele. Uma dessas técnicas é o design patterns que nos ajudar a manter um padrão de qualidade em nossos códigos. Além disso, muitas linguagens utilizam esse paradigma: java, python, .Net, Javascript e muitas outras.*
-
-Como era antes de 2015:
-```
-function Person(name) {
-    this._name = name;
-}
-
-var person = new Person('Simara');
-
-console.log(person)
-
-```
-Como é com o ES6:
-```
-class Calculator {
-    constructor(num1, num2) {
-        this.num1 = num1;
-        this.num2 = num2;
-    }
-
-    sum() {
-        return this.num1 + this.num2;
-    }
-
-    sub() {
-        return this.num1 - this.num2;
-    }
-
-    mult() {
-        return this.num1 * this.num2;
-    }
-
-    div() {
-        return this.num1 / this.num2;
-    }
-}
-
-const calculator = new Calculator(5, 6);
-
-console.log(calculator.sum());
-console.log(calculator.sub());
-console.log(calculator.mult());
-console.log(calculator.div());
-```
-
-* Como entender classes no JS.
-
-*Classes são como formas/moldes que definem os métodos e as propriedades para instanciarmos um objeto. Dentro dela não definimos nenhum dado ou informação é apenas a forma de como nosso objeto irá se parecer. Já objetos são as versões instanciadas dessas classes, essencialmente uma versão especifica dessa classe com os valores para as propriedades. Por exemplo se criarmos uma class Parede que recebe a propriedade cor, ela não diz qual cor será pintada essa parede, apenas diz que quando for criado um objeto nova parede ela irá receber um valor para cor.*
-
-* E a palavra reservada this?
-
-*Antes de 2015 as classes eram escritas como funções, após o es6 usamos a sintaxe class e a palavra reservada this é usada para internamente da classe associarmos um valor.*
-
-
-* Qual a função do constructor nas classes?
-
-*As classes em JavaScript têm um método constructor que permite definir campos quando o objeto é instanciado com uma class, ou seja, é esse método que faz a contrução do objeto quando a gente cria uma intância dessa classe usando a palavra reservada new. Cada classe pode ter apenas um constructor. Se houver mais de um, SyntaxError será lançado. O constructor também pode chamar o método super para chamar o constructor de outra classe se a classe estender uma classe mãe. Configurando assim a herança na POO.*
-
-* Quais seriam as situações que seria mais lógico usar classe ao invés de uma função?
-
-*O mais importante a lembrar: as classes são apenas funções JavaScript normais e antes eram declaradas sem o uso da class sintaxe. Que somente foi adicionado ao ES6(2015) para tornar mais fácil declarar e herdar objetos complexos.*
-
-*A principal diferença entre a sintaxe class e function é que function sofre hoisting, enquanto class não. Isso significa que um objeto nunca pode ser instanciado executando uma classe que foi declarada posteriormente. Enquanto é possível executar uma funçao antes e declarar depois. Pois o interpretador do javascript eleva a função para o topo da página.*
-
-*Agora para decidir quando usar class ou function, é muito importante lembrar dos conceitos da programação orientada a objeto. Por exemplo quando nós encapsulamos a lógica em uma class, o código fica muito mais limpo e de fácil entendimento em vez de criarmos várias funções.*
-
-*Geralmente usamos classes para construir diferentes objetos com as mesmas propriedades. Exemplo conta bancária. Usamos também em algumas bibliotecas e supersets (class components no React e typescript nos types e interfaces)*
-
 ____
 ### Mão no código
 
@@ -238,6 +148,21 @@ Vamos criar nossa primeira integração com MongoDB. Será um CRUD para um siste
 Mas antes disso, vamos preparar nosso ambiente:
 
 [Guia para instalar o MongoDB](https://drive.google.com/file/d/1lhw4exyMhoBVWz3aMzHK_ANPF-OxfoMm/view?usp=sharing)
+
+`Tecnologias que vamos usar:`
+| Ferramenta | Descrição |
+| --- | --- |
+| `javascript` | Linguagem de programação |
+| `nodejs` | Ambiente de execução do javascript|
+| `express` | Framework NodeJS |
+| `dotenv` | Dependência para proteger dados sensíveis do projeto|
+| `mongoose` | Dependência que interage com o MongoDB para a conexão da database, criação do model e das collections|
+| `nodemon` | Dependência que observa as atualizações realizadas nos documentos para rodar o servidor automaticamente|
+| `npm ou yarn` | Gerenciador de pacotes|
+| `MongoDb` | Banco de dado não relacional orietado a documentos|
+| `MongoDb Compass` | Interface gráfica para verificar se os dados foram persistidos|
+ `Insomnia ou Postman` | Interface gráfica para realizar os testes|
+
 
 `Vamos iniciar o projeto`
 ```
@@ -248,9 +173,9 @@ npm i --save express mongoose
 
 3- Instalar como dependencias de desenvolvimento o dotenv e o nodemon:
 npm i --save-dev dotenv nodemon
-
 ```
-`Arquitetura`
+
+`Arquitetura - vamos criar nossas pastinhas e arquivos`
 #### Server.js
 > Sobe servidor nodejs, usa as rotas, converte os dados para Json e faz conexao com a importação do db.
 
@@ -274,21 +199,19 @@ npm i --save-dev dotenv nodemon
 #### 📂Data
 > Cria a configuração de conexão com o banco.
 
-`Tecnologias`
-| Ferramenta | Descrição |
-| --- | --- |
-| `javascript` | Linguagem de programação |
-| `nodejs` | Ambiente de execução do javascript|
-| `express` | Framework NodeJS |
-| `dotenv` | Dependência para proteger dados sensíveis do projeto|
-| `mongoose` | Dependência que interage com o MongoDB para a conexão da database, criação do model e das collections|
-| `nodemon` | Dependência que observa as atualizações realizadas nos documentos para rodar o servidor automaticamente|
-| `npm ou yarn` | Gerenciador de pacotes|
-| `MongoDb` | Banco de dado não relacional orietado a documentos|
-| `MongoDb Compass` | Interface gráfica para verificar se os dados foram persistidos|
- `Insomnia ou Postman` | Interface gráfica para realizar os testes|
 
-`Usaremos Mongoose para modelar nosso objeto e conectar com o banco de dados. O nosso documento será conforme abaixo:`
+`Vamos configurar o mongoose e conectar o mongodb`
+```
+1- Em models cria o esquema e exporta o models
+
+2- Em database cria toda a configuração de conexão e passa a string de conexão
+
+3- No server realmente chama o database e liga o mongodb, usando o mongoose 
+
+4- Verifica se no terminal o console retorna a mensagem de banco de dados conectado ou erro.
+```
+
+`Vamos criar nosso model com o Mongoose para modelar nosso objeto. O nosso documento será conforme abaixo:`
 
 * name
   - String
@@ -303,11 +226,12 @@ npm i --save-dev dotenv nodemon
 * created_at
   - Date
   - required
+  - default
 
 ---
 <br>
 **CRUD:**
-o endpoint será: localhost:3333/books
+o endpoint será: localhost:3333/livros
 
 <br>
 <br>
@@ -336,7 +260,21 @@ o endpoint será: localhost:3333/books
 
 <br>
 
-***Obs.: Todas as rotas deverão ser testadas no postman ou insomnia e verificar se as informações foram de fato persistidas no db***
+***Obs.: Todas as rotas deverão ser testadas no postman ou insomnia e verificar se as informações foram de fato persistidas no mongodb***
+
+`Vamos se os dados estão salvando no MongoDB pela interface gráfica MongoCompass`
+
+```
+1- Abre o Mongo Compass
+2- Clica em nova conexão
+3- Cola a string de conexão que usamos lá no nosso arquivo database
+4- Se o db não aparecer automaticamente, clica no botão create database e coloca os mesmos nomes que salvamos no nosso projeto node. Exemplp: db: livros, collection: livros e finaliza
+5- Encontre na lista de databases a que voce deseja conectar, clique no db e depois na collection e consiga ver suas alterações sendo salvas lá
+```
+
+`Vamos testar nossas requisições e respostas com o Postman ou Insomnia`
+1- crie as requisições para cada método HTTP, coloque a rota e informações necessárias e envie
+2-  Tudo que foi feito por dentro do postman deve refletir no MongoCompass :)
 
 <br>
 
@@ -363,6 +301,7 @@ Usaremos Mongoose para modelar nosso objeto e conectar com o banco de dados. Os 
 * created_at
   - Date
   - required
+  - default
 
 ---
 <br>
