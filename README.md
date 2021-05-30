@@ -102,6 +102,9 @@ Mongoose é uma modelagem de objeto mongodb elegante para node.js.
 
 Tudo no Mongoose começa com um Schema. Cada esquema é mapa para uma coleção MongoDB e define a forma dos documentos dentro dessa coleção.
 
+Exemplo photoshop x Filtro do Instagram
+
+
 #### `10. Conceito de Model (Schema)`
 Model ou Schema são moldes que descrevem quais campos serão aceitos no seu banco de dados, podemos também definir informações de tipo de dados e fazer "os relacionamentos".
 
