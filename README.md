@@ -25,6 +25,9 @@ Turma Online 11 - Todas em Tech | Back-end | 2021 | Semana 13 -  Integração B
 
 Ex-aluna {reprograma}, desenvolvedora na ThoughtWorks e criadora do Podcast Quero Ser Dev.
 
+Minha história com o MongoDb.
+Já dizia Jobs, a gente só consegue conectar os pontos olhando pra trás.
+
 <br>
 <br>
 
@@ -48,6 +51,17 @@ Vantagens:
 | `Possuem alta escalabilidade e desempenho` | Geralmente demanda distribuição vertical de servidores, o que gera mais custo, pois quanto mais dados, mais memória e mais disco um servidor precisa. |
 | `Alguns tipos de bancos de dados não relacional: armazenamento de chave-valor, armazenamento column family, orientado a grafos e orientado a documentos` | Structured Query Language, ou Linguagem de Consulta Estruturada ou SQL, é a linguagem de pesquisa declarativa padrão para banco de dados relacional.|
 
+Aqui está um comparativo dos termos MongoDb e SQL:
+
+| MongoDB | SQL |
+| --- | --- |
+| `database` | database|
+| `collection` | table|
+| `document` | row|
+| `field` | column|
+| `lookup` | table joins|
+
+
 <br>
 <br>
 
@@ -66,16 +80,18 @@ Além disso, o Mongo possui seu driver com suas próprias queries(comandos para 
 Mais de 22.600 clientes no mundo usam MongoDB. Algumas delas: Google, Forbes, eBay, Toyota, SAP, Adobe e muitas outras.
 
 #### `7. Operações de CRUD`
-O CRUD é um acrônimo para Create, Read, Update e Delete(criação, consulta, atualização e remoção de dados) . São as 4 operações principais em um banco de dados. No MongoDB essas funcionalidades são:
-```
-Create - insert() ou save()
+O CRUD é um acrônimo para Create, Read, Update e Delete(criação, consulta, atualização e remoção de dados) . São as 4 operações principais em um banco de dados. No MongoDB, usando o Mongoose essas funcionalidades são:
 
-Read - find()
 
-Update - update()
+| OPERAÇÃO | MONGODB | MONGOOSE |
+| --- | --- | --- |
+| `C`REATE | insertOne() | save() |
+| `R`EAD | find() | find() |
+| `U`PDATE | updateOne() | save() |
+| `D`ELETE | deleteOne() | remove() |
 
-Delete - remove()
-```
+Para conhecer todas as operações MongoDb: 
+https://docs.mongodb.com/manual/crud/
 
 #### `8. O que é odm?`
 Uma ferramenta que mapeia entre um Modelo de Objeto e um Banco de Dados de Documentos.
@@ -84,11 +100,10 @@ Uma ferramenta que mapeia entre um Modelo de Objeto e um Banco de Dados de Docum
 
 Mongoose é uma modelagem de objeto mongodb elegante para node.js.
 
-Tudo no Mongoose começa com um Schema. Cada esquema é mapeado para uma coleção MongoDB e define a forma dos documentos dentro dessa coleção.
+Tudo no Mongoose começa com um Schema. Cada esquema é mapa para uma coleção MongoDB e define a forma dos documentos dentro dessa coleção.
 
 #### `10. Conceito de Model (Schema)`
 Model ou Schema são moldes que descrevem quais campos serão aceitos no seu banco de dados, podemos também definir informações de tipo de dados e fazer "os relacionamentos".
-
 
 #### `11. Extra: `
 
@@ -145,6 +160,50 @@ Você pode criar um .env.example e deixar apenas as chaves genéricas
 
 *Se você começou agora, vai perceber com o tempo a importancia desses 4 pilares, pois eles são as bases de técnicas e ferramentas que nos ajudam desde a concepção do projeto até codificação dele. Uma dessas técnicas é o design patterns que nos ajudar a manter um padrão de qualidade em nossos códigos. Além disso, muitas linguagens utilizam esse paradigma: java, python, .Net, Javascript e muitas outras.*
 
+Como era antes de 2015:
+```
+function Person(name) {
+    this._name = name;
+}
+
+var person = new Person('Simara');
+
+console.log(person)
+
+```
+Como é com o ES6:
+```
+class Calculator {
+    constructor(num1, num2) {
+        this.num1 = num1;
+        this.num2 = num2;
+    }
+
+    sum() {
+        return this.num1 + this.num2;
+    }
+
+    sub() {
+        return this.num1 - this.num2;
+    }
+
+    mult() {
+        return this.num1 * this.num2;
+    }
+
+    div() {
+        return this.num1 / this.num2;
+    }
+}
+
+const calculator = new Calculator(5, 6);
+
+console.log(calculator.sum());
+console.log(calculator.sub());
+console.log(calculator.mult());
+console.log(calculator.div());
+```
+
 * Como entender classes no JS.
 
 *Classes são como formas/moldes que definem os métodos e as propriedades para instanciarmos um objeto. Dentro dela não definimos nenhum dado ou informação é apenas a forma de como nosso objeto irá se parecer. Já objetos são as versões instanciadas dessas classes, essencialmente uma versão especifica dessa classe com os valores para as propriedades. Por exemplo se criarmos uma class Parede que recebe a propriedade cor, ela não diz qual cor será pintada essa parede, apenas diz que quando for criado um objeto nova parede ela irá receber um valor para cor.*
@@ -175,30 +234,58 @@ Vamos criar nossa primeira integração com MongoDB. Será um CRUD para um siste
 
 Mas antes disso, vamos preparar nosso ambiente:
 
+[Guia para instalar o MongoDB](https://drive.google.com/file/d/1lhw4exyMhoBVWz3aMzHK_ANPF-OxfoMm/view?usp=sharing)
+
+`Vamos iniciar o projeto`
 ```
-1- Baixar e instalar o MongoDb
+1- Iniciar projeto node: npm init -y
 
-2- Baixar e instalar o Mongo Compass ou Robo 3T 
+2- Instalar express e mongoose: 
+npm i --save express mongoose
 
-3- Definir a porta como 27017
+3- Instalar como dependencias de desenvolvimento o dotenv e o nodemon:
+npm i --save-dev dotenv nodemon
 
-4- Criar conexão com a string: mongodb://localhost/books
-
-5- Criar a database com o nome de books
-
-6-  Iniciar projeto node/express 
-
-7- Instalar a dependencia Mongoose
-
-8- Instalar como dependencias de desenvolvimento o dotenv e o nodemon
-
-9- Configurar o script de devStart do nodemon
-
-10- Imprimir no console status de conexao com db e também status do servidor.
 ```
+`Arquitetura`
+#### Server.js
+> Sobe servidor nodejs, usa as rotas, converte os dados para Json e faz conexao com a importação do db.
 
+#### .env
+> Gerencia a variavel de ambiente de configuração do MongoDb
 
-Usaremos Mongoose para modelar nosso objeto e conectar com o banco de dados. Os campos serão conforme abaixo: 
+#### .env.example
+> Salva a variavel de forma genérica
+
+#### .gitignore
+> Ignora arquivos e pastas para o git
+
+#### 📂SRC
+
+#### 📂Routes
+>  Cria as rotas apenas com a responsabilidade dos metodos HTTP
+#### 📂Controllers
+> Cria a lógica e salva as informações do db.
+#### 📂Models
+> Modela o esquema de dados para o banco.
+#### 📂Data
+> Cria a configuração de conexão com o banco.
+
+`Tecnologias`
+| Ferramenta | Descrição |
+| --- | --- |
+| `javascript` | Linguagem de programação |
+| `nodejs` | Ambiente de execução do javascript|
+| `express` | Framework NodeJS |
+| `dotenv` | Dependência para proteger dados sensíveis do projeto|
+| `mongoose` | Dependência que interage com o MongoDB para a conexão da database, criação do model e das collections|
+| `nodemon` | Dependência que observa as atualizações realizadas nos documentos para rodar o servidor automaticamente|
+| `npm ou yarn` | Gerenciador de pacotes|
+| `MongoDb` | Banco de dado não relacional orietado a documentos|
+| `MongoDb Compass` | Interface gráfica para verificar se os dados foram persistidos|
+ `Insomnia ou Postman` | Interface gráfica para realizar os testes|
+
+`Usaremos Mongoose para modelar nosso objeto e conectar com o banco de dados. O nosso documento será conforme abaixo:`
 
 * name
   - String
@@ -221,6 +308,8 @@ o endpoint será: localhost:3333/books
 
 <br>
 <br>
+
+`Comportamento esperado`
 
 | Recurso | Descrição |
 | --- | --- |
