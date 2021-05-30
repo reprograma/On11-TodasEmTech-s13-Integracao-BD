@@ -145,7 +145,7 @@ ____
 
 Vamos criar nossa primeira integração com MongoDB. Será um CRUD para um sistema simples de cadastros de livros.
 
-Mas antes disso, vamos preparar nosso ambiente:
+Mas antes disso, vamos preparar nosso ambiente instalando e executando o mongo conforme guia abaixo:
 
 [Guia para instalar o MongoDB](https://drive.google.com/file/d/1lhw4exyMhoBVWz3aMzHK_ANPF-OxfoMm/view?usp=sharing)
 
@@ -282,7 +282,7 @@ o endpoint será: localhost:3333/livros
 
 ### Entregável da semana
 
-1) Vocês irão criar um CRUD MongoDB para um sistema simples de cadastros de filmes. (Se espelhe totalmente pelo exemplo da sala que fizemos com cadastro de livros).
+1) Vocês irão criar um CRUD MongoDB para um sistema simples de cadastros de filmes. Ufaaa, já temos o MongoDB e MongoCompass instalados e prontinhos para usarmos. (Se espelhe totalmente pelo exemplo da sala que fizemos com cadastro de livros).
 
 
 2) Passo a passo para entrega:
