@@ -303,7 +303,7 @@ npm i --save-dev dotenv nodemon
 * created_at
   - Date
   - required
-
+  - default
 ---
 <br>
 **CRUD:**
